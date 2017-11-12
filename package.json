@@ -1,0 +1,24 @@
+{
+  "name": "node_http_api",
+  "version": "1.0.0",
+  "description": "A pure Node.js RESTful API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayakoneval/NodeHTTPApi.git"
+  },
+  "author": "Maya Koneval",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayakoneval/NodeHTTPApi/issues"
+  },
+  "homepage": "https://github.com/mayakoneval/NodeHTTPApi#readme",
+  "dependencies": {
+    "pg": "^7.4.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.22.5"
+  }
+}
