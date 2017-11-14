@@ -9,9 +9,16 @@ var pool  = new pg.Pool({
   password: 'guest'
 });
 
+pool.query("CREATE TABLE IF NOT EXISTS people(firstname varchar(80), lastname varchar(80))");
+
+var insert_text = "INSERT INTO people (firstname, lastname) values($1, $2) RETURNING *";
+
 function listTable (req, res) {
   pool.query('SELECT * FROM people')
-      .then(response =>  {res.write(JSON.stringify(response.rows))})
+      .then(response =>  {
+        res.write(JSON.stringify(response.rows))
+        res.end();
+      })
       .catch(e => console.error(e.stack));
 }
 
@@ -28,13 +35,4 @@ module.exports = {
   addValue: addValue
 };
 
-pool.query("CREATE TABLE IF NOT EXISTS people(firstname varchar(80), lastname varchar(80))");
-
-var insert_text = "INSERT INTO people (firstname, lastname) values($1, $2) RETURNING *";
-/*var famous_names = [['Maya', 'Koneval'], ['Barack', 'Obama'], ['Justin', 'Trudeau']];
-
-for(var i = 0; i<famous_names.length; i++) {
-  addValue(famous_names[i]);
-}*/
-
-//add a listener to figure out when to end pool
+//add a listener to end the pool
