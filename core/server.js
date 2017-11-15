@@ -7,7 +7,7 @@ const querystring = require('querystring');
 
 function onRequest(req, res) {
     var query_string = querystring.parse((req.url).substring(1));
-    res.writeHead(200, { "Content-Type": "text/html" });
+    res.writeHead(200, { "Content-Type": "application/json" });
     if(query_string.listtablecontent != undefined) {
       db.listTable(req, res);
     }
