@@ -1,10 +1,9 @@
 var pg = require("pg");
 
-var conString = "pg://admin:guest@localhost:5432/maya_table";
-
 var pool  = new pg.Pool({
   user: 'maya',
   host: 'localhost',
+  port: '5432',
   database: 'names',
   password: 'guest'
 });
@@ -16,6 +15,7 @@ var insert_text = "INSERT INTO people (firstname, lastname) values($1, $2) RETUR
 function listTable (req, res) {
   pool.query('SELECT * FROM people')
       .then(response =>  {
+        console.log(JSON.stringify(response.rows))
         res.write(JSON.stringify(response.rows))
         res.end();
       })
