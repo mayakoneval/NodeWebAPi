@@ -1,8 +1,16 @@
 # NodeWebAPi
 node js http api for X-Agora eval
 
-To successfully test this Node.js HTTP API you need to install the postgres-node module 
-https://github.com/brianc/node-postgres
-    npm install pg
-and have a Postgresql database set up called names with a table called people 
-database credentials: {user: maya, password: guest}.
+To successfully test this Node.js HTTP API you should run the Dockerfile with docker and set up a node-red dashboard by importing the json file 'nodeRedFlow.json' into your dashboard
+
+to use the Node API:
+
+localhost:3000/listtablecontent // lists current table in json format
+
+localhost:3000/firstname=_____&lastname=________ // adds firstname and lastname to table under columns firstname and lastname respectively
+
+to use the node-red dashboard:
+
+http://127.0.0.1:1880/noderedlist // lists current table in json format using the Node API
+
+http://127.0.0.1:1880/add?firstname=__________&lastname=______ // adds firstname and lastname values to table under columns firstname and lastname respectively
