@@ -1,5 +1,8 @@
 const http = require('http');
+var mqtt = require('mqtt');
 var db = require("./database");
+
+var mqtt_client = mqtt.connect('mqtt://test.mosquitto.org');
 
 const port = 3000;
 const querystring = require('querystring');
@@ -12,6 +15,7 @@ function onRequest(req, res) {
     }
     else if(query_string.firstname != undefined) {
       res.end("Successfully added content. firstname: " + query_string.firstname + ", lastname: " + query_string.lastname);
+      mqtt_client.publish('test', 'added'+JSON.stringify(query_string));
       db.addValue(req, res, [query_string.firstname, query_string.lastname]);
     }
     else {
@@ -20,4 +24,5 @@ function onRequest(req, res) {
 }
 
 http.createServer(onRequest).listen(port);
+mqtt_client.end();
 console.log("Server has started.");
