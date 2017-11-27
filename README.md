@@ -3,6 +3,8 @@ node js http api for X-Agora eval
 
 To successfully test this Node.js HTTP API you should run the Dockerfile with docker and set up a node-red dashboard by importing the json file 'nodeRedFlow.json' into your dashboard
 
+I don't have complete confidence that this dockerfile is always successful. This is a problem I have tried to fix. Please ask me questions if you are unable to at least get a running app working!
+
 worst case, npm start after cloning this repo
 
 to use the Node API:
